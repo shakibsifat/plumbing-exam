@@ -24,7 +24,8 @@
     stopTimer();
     document.title = 'প্লাম্বিং লেভেল-২ পরীক্ষা';
     var h = '<h1 class="center">প্লাম্বিং লেভেল-২ পরীক্ষা</h1>' +
-      '<p class="center muted">প্লাম্বিং অ্যান্ড পাইপ ফিটিংস · NTVQF/BNQF লেভেল-২ · মোট ' + bn(D.pool.length) + 'টি আলাদা প্রশ্ন</p>';
+      '<p class="center muted">প্লাম্বিং অ্যান্ড পাইপ ফিটিংস · NTVQF/BNQF লেভেল-২ · মোট ' + bn(D.pool.length) + 'টি আলাদা প্রশ্ন</p>' +
+      '<p class="center"><a class="btn" href="download/">PDF ডাউনলোড</a></p>';
     h += '<section class="section"><h2>১০টি পেপার পরীক্ষা</h2><div class="grid">';
     for (var p = 1; p <= 10; p++) {
       var P = D.papers[p] || { mcq: [], written: [] };
