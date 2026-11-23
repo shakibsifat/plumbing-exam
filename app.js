@@ -118,7 +118,13 @@
 
     document.getElementById('submit').addEventListener('click', function () {
       var un = mcqCount - Object.keys(ans).length;
-      if (un > 0 && !confirm(bn(un) + 'টি প্রশ্নের উত্তর দেওয়া হয়নি। তবুও জমা দেবেন?')) return;
+      var b = this;
+      if (un > 0 && !b.dataset.sure) {
+        b.dataset.sure = '1';
+        b.textContent = bn(un) + 'টি বাকি — নিশ্চিত? আবার চাপুন';
+        setTimeout(function () { if (b.isConnected) { delete b.dataset.sure; b.textContent = 'জমা দিন'; } }, 5000);
+        return;
+      }
       submit(false);
     });
 
