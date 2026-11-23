@@ -33,6 +33,8 @@
       h += '<a class="btn" href="#/paper/' + p + '">পেপার ' + bn(p) + '<small>(' + cnt + ')</small></a>';
     }
     h += '</div></section>';
+    if (D.common && D.common.length) h += '<section class="section"><h2>বেশি আসা প্রশ্ন</h2><p class="note">যে প্রশ্নগুলো ২ বা তার বেশি পেপারে এসেছে — মোট ' + bn(D.common.length) + 'টি, সবচেয়ে বেশিবার আসাগুলো আগে।</p>' +
+      '<a class="btn fill" href="#/common">বেশি আসা প্রশ্নের পরীক্ষা</a></section>';
     h += '<section class="section"><h2>ফাইনাল মডেল টেস্ট</h2><div class="grid">';
     for (var m = 1; m <= D.models.length; m++) h += '<a class="btn" href="#/model/' + m + '">মডেল টেস্ট ' + bn(m) + '<small>(' + bn(D.models[m - 1].length) + 'টি)</small></a>';
     h += '</div><p class="note">প্রতিটি মডেল টেস্টে সব পেপার থেকে মিশ্রিত প্রশ্ন — যতবার খুলবেন একই প্রশ্ন আসবে।</p></section>';
@@ -204,6 +206,7 @@
       return runTest('পেপার ' + bn(n) + ' পরীক্ষা', list, '#/paper/' + n);
     }
     if (a === 'model' && n >= 1 && n <= D.models.length) return runTest('মডেল টেস্ট ' + bn(n), mcqList(D.models[n - 1], true), '#/model/' + n);
+    if (a === 'common' && D.common) return runTest('বেশি আসা প্রশ্ন — ' + bn(D.common.length) + 'টি', D.common.map(function (id) { return { kind: 'mcq', it: byId[id], src: bn(D.commonPapers[id].length) + 'টি পেপারে এসেছে — পেপার ' + D.commonPapers[id].map(bn).join(', ') }; }), '#/common');
     if (a === 'random' && !parts[1]) return randomPick();
     if (a === 'random' && [10, 20, 50, 100, 200].indexOf(n) >= 0) {
       var ids = shuffle(D.pool).slice(0, Math.min(n, D.pool.length));
