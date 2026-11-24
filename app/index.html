@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অ্যাপ ডাউনলোড — প্লাম্বিং লেভেল-২</title>
+<style>
+body{font-family:"Noto Sans Bengali",sans-serif;max-width:560px;margin:0 auto;padding:24px;line-height:1.7;background:#f5f8f5;color:#1b2b1b}
+h1{font-size:22px;color:#1b5e20}
+.btn{display:block;width:100%;box-sizing:border-box;padding:16px;font-size:18px;border:0;border-radius:12px;background:#2e7d32;color:#fff;cursor:pointer;font-family:inherit}
+.btn:disabled{opacity:.6}
+.card{background:#fff;border-radius:12px;padding:16px;margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+#st{text-align:center;margin-top:10px;font-size:14px}
+a{color:#2e7d32}
+</style>
+</head>
+<body>
+<h1>প্লাম্বিং লেভেল-২ — Android অ্যাপ</h1>
+<p>সাইজ প্রায় ১.১ MB · ইন্টারনেট ছাড়াই চলে · কোনো অনুমতি লাগে না</p>
+<button class="btn" id="dl">অ্যাপ (APK) ডাউনলোড করুন</button>
+<div id="st"></div>
+<div class="card">
+<b>ইনস্টল করার নিয়ম</b>
+<ol>
+<li>উপরের বাটন চেপে ফাইলটা ডাউনলোড করুন</li>
+<li>ডাউনলোড হওয়া <b>plumbing-exam.apk</b> ফাইলে চাপুন</li>
+<li>"Install unknown apps" চাইলে <b>Allow</b> দিন</li>
+<li>"Unsafe app" দেখালে <b>Install anyway</b> চাপুন — Play Store-এর বাইরের সব অ্যাপেই এটা দেখায়</li>
+</ol>
+বাটনে কাজ না হলে Facebook/Messenger-এর ভেতর থেকে না খুলে এই পেজটা সরাসরি <b>Chrome</b>-এ খুলুন।
+</div>
+<p><a href="../">← পরীক্ষার সাইটে ফিরে যান</a></p>
+<script>
+document.getElementById('dl').onclick=async function(){
+  var b=this,st=document.getElementById('st');b.disabled=true;st.textContent='ডাউনলোড হচ্ছে…';
+  try{
+    var r=await fetch('plumbing-exam.apk.b64?v=1');if(!r.ok)throw 0;
+    var t=(await r.text()).replace(/\s+/g,'');var s=atob(t),n=s.length,u=new Uint8Array(n);
+    for(var i=0;i<n;i++)u[i]=s.charCodeAt(i);
+    var blob=new Blob([u],{type:'application/vnd.android.package-archive'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='plumbing-exam.apk';
+    document.body.appendChild(a);a.click();a.remove();
+    st.textContent='ডাউনলোড শেষ। এখন ফাইলটা খুলে ইনস্টল করুন।';
+  }catch(e){st.textContent='ডাউনলোড হয়নি। ইন্টারনেট চেক করে আবার চাপুন, বা পেজটা Chrome-এ খুলুন।';}
+  b.disabled=false;
+};
+</script>
+</body>
+</html>
