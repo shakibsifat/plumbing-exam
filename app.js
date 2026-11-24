@@ -25,7 +25,7 @@
     document.title = 'প্লাম্বিং লেভেল-২ পরীক্ষা';
     var h = '<h1 class="center">প্লাম্বিং লেভেল-২ পরীক্ষা</h1>' +
       '<p class="center muted">প্লাম্বিং অ্যান্ড পাইপ ফিটিংস · NTVQF/BNQF লেভেল-২ · মোট ' + bn(D.pool.length) + 'টি আলাদা প্রশ্ন</p>' +
-      '<p class="center"><a class="btn" href="download/">PDF ডাউনলোড</a></p>';
+      '<p class="center"><a class="btn" href="download/">PDF ডাউনলোড</a> <a class="btn" href="offline/plumbing-exam-offline.html" download="plumbing-exam-offline.html">অফলাইন ভার্সন ডাউনলোড</a></p><p class="center" style="font-size:13px;opacity:.8">অফলাইন ভার্সন: একবার ডাউনলোড করে Chrome দিয়ে খুললে ইন্টারনেট ছাড়াই পুরো পরীক্ষা চলবে</p>';
     h += '<section class="section"><h2>১০টি পেপার পরীক্ষা</h2><div class="grid">';
     for (var p = 1; p <= 10; p++) {
       var P = D.papers[p] || { mcq: [], written: [] };
